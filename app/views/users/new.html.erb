@@ -10,6 +10,14 @@
     <input type="password" name="user[password]">
     <input type="submit" value="Submit">
   </form> -->
+  <% if @users.errors.any? %>
+  <p><%= pluralize(@users.errors.count, "error" )%></p>
+    <ul>
+      <% @users.errors.full_messages.each do |e| %>
+      <li><%= e %></li>
+      <%end %>
+    </ul>
+<%end %>
 
 <%= form_tag users_path, method: "post" do %>
 <p><%= label_tag :name %></p>

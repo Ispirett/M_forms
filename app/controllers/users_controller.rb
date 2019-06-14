@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :user_id , only: [:edit, :update]
+  before_action :user_id , only: [:edit, :update, :show]
     def new
       @users = User.new
     end
@@ -26,9 +26,10 @@ class UsersController < ApplicationController
      end
 
     end
+
     def show
-        @user = User.find(params[:id])
     end
+
     private
     def user_params
       params.require(:user).permit(:name, :email, :password)
